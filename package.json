@@ -1,0 +1,14 @@
+{
+  "name": "bb8-band",
+  "version": "1.0.0",
+  "description": "A microsoft band controller for bb8",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "wow"
+  ],
+  "author": "dlanthier@gmail.com",
+  "license": "MIT"
+}
