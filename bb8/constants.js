@@ -1,0 +1,7 @@
+module.exports = {
+  BB8EVENTS: {
+    CONNECTED: "BB8-EVT-CONNECTED",
+    DISCONNECTED: "BB8-EVT-DISCONNECTED",
+    ERROR: "BB8-EVT-ERROR"
+  }
+};

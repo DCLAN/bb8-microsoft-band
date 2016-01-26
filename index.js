@@ -15,9 +15,10 @@ router.get('/', function(req,res) {
 router.post('/subscribe', function(req, res) {
   // TODO; create a bb8
   // return an id
-  var tmpBB8 = new bb8("15acde0142c44762aa78c0e01489278b", "Zig");
-  tmpBB8.connect();
-  robots[0] = tmpBB8;
+  // TODO: UUID + name need to come from the application. Still at POC stage though.
+  var robot = new bb8("15acde0142c44762aa78c0e01489278b", "Zig");
+  robot.connect();
+  robots[0] = robot;
   res.status(200).send("OK");
 });
 
@@ -31,8 +32,19 @@ router.post('/move', function(req, res) {
     var robot = robots[0];
     robot.move();
     res.status(200).send("Okay?");
-    // robot.move();
-    // robot.disconnect();
+  }
+});
+
+// TODO: gross, needs to be more robust, you know?
+router.post('/stop', function(req, res) {
+  // TODO; create a bb8
+  // TODO; Gross API.
+  if(robots[0] == undefined) {
+    res.status(500).send("Not A Robot");
+  } else {
+    var robot = robots[0];
+    robot.stop();
+    res.status(200).send("Okay?");
   }
 });
 
