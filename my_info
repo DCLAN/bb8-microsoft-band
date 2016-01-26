@@ -1,0 +1,16 @@
+// TODO: need a way to discover this automatically...
+bb8 uuid = 15acde0142c44762aa78c0e01489278b;
+peripheral discovered (15acde0142c44762aa78c0e01489278b with address <c9:82:e6:67:02:8c, unknown>, connectable true, RSSI -54:
+	hello my local name is:
+		BB-028C
+	can I interest you in any of the following advertised services:
+		[]
+	here is my manufacturer data:
+		"3330"
+	my TX power level is:
+		6
+
+
+-- stuff for blog post..
+#1. Getting band to work on ios
+#2. making sphero work locally...
