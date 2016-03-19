@@ -3,5 +3,6 @@ module.exports = {
     CONNECTED: "BB8-EVT-CONNECTED",
     DISCONNECTED: "BB8-EVT-DISCONNECTED",
     ERROR: "BB8-EVT-ERROR"
-  }
+  },
+  BB8_BAND_SERVICE_NAME: "dclan-bb8-band"
 };

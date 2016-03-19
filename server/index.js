@@ -1,6 +1,7 @@
 var express = require("express");
 var bb8 = require("./bb8");
 var app = express();
+var discovery = require("./discovery");
 
 var router = express.Router();
 app.use('/bb8', router);
@@ -50,5 +51,9 @@ router.post('/stop', function(req, res) {
 
 var port = process.env.PORT || 8080;
 app.listen(port);
+
+var appDiscovery = new discovery(port);
+appDiscovery.publish();
+appDiscovery.find();
 
 console.log("Server started on Port: " + port);
