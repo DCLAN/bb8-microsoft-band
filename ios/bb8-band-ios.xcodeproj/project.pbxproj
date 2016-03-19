@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B235B0631C9C86440053373C /* discovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B235B0621C9C86440053373C /* discovery.swift */; };
+		B235B0651C9DFF7C0053373C /* droidservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B235B0641C9DFF7C0053373C /* droidservice.swift */; };
 		B27E87921C53CCE400AAC6AC /* MicrosoftBandKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B27E87911C53CCE400AAC6AC /* MicrosoftBandKit_iOS.framework */; };
 		B2E09F6A1C53C30C00C26E9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E09F691C53C30C00C26E9D /* AppDelegate.swift */; };
 		B2E09F6C1C53C30C00C26E9D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E09F6B1C53C30C00C26E9D /* ViewController.swift */; };
@@ -41,6 +42,7 @@
 		4871893CFE5BEF30FF4FFBD2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6E252A24803F699450D4D86A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B235B0621C9C86440053373C /* discovery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = discovery.swift; path = Service/discovery.swift; sourceTree = "<group>"; };
+		B235B0641C9DFF7C0053373C /* droidservice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = droidservice.swift; sourceTree = "<group>"; };
 		B27E87911C53CCE400AAC6AC /* MicrosoftBandKit_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MicrosoftBandKit_iOS.framework; path = "bb8-band-ios/Frameworks/MicrosoftBandKit_iOS.framework"; sourceTree = "<group>"; };
 		B2E09F661C53C30C00C26E9D /* bb8-band-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bb8-band-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2E09F691C53C30C00C26E9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				B235B0621C9C86440053373C /* discovery.swift */,
+				B235B0641C9DFF7C0053373C /* droidservice.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B235B0651C9DFF7C0053373C /* droidservice.swift in Sources */,
 				B235B0631C9C86440053373C /* discovery.swift in Sources */,
 				B2E09F6C1C53C30C00C26E9D /* ViewController.swift in Sources */,
 				B2E09F6A1C53C30C00C26E9D /* AppDelegate.swift in Sources */,

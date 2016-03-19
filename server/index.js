@@ -10,7 +10,15 @@ var robots = [];
 
 // API HERE
 router.get('/', function(req,res) {
-  res.send("Hello, I am BB8");
+  console.log("Root Route: Hello I am BB8");
+  res.status(200).send("Hello, I am BB8");
+});
+
+router.get('/status', function(req, res) {
+  console.log("Server Status Requested.");
+  // TODO: there has to be a better way
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify({ valid: 1, robot: robots[0] }));
 });
 
 router.post('/subscribe', function(req, res) {
@@ -53,7 +61,6 @@ var port = process.env.PORT || 8080;
 app.listen(port);
 
 var appDiscovery = new discovery(port);
-appDiscovery.publish();
-appDiscovery.find();
+appDiscovery.publish();;
 
 console.log("Server started on Port: " + port);

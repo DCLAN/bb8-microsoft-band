@@ -40,9 +40,7 @@ class Discovery : NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate {
     self.completion?(result: true, url: serviceUrl)
 
   }
-  
-  // TODO: handle non happy path.
-  
+    
   // MARK: NSNetServiceBrowserDelegate
   func netServiceBrowser(netServiceBrowser: NSNetServiceBrowser,
     didFindDomain domainName: String,

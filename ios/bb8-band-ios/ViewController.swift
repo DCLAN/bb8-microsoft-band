@@ -10,18 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
   
-  var discovery : Discovery!
-  let serviceName = "dclan-bb8-band"
+  var droidService : DroidService!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
-    self.discovery = Discovery()
-    self.discovery.searchForWebService(serviceName, completion: { (result: Bool, url: NSURL?) in
-      if let absoluteString = url?.absoluteString {
-        print("Discovered base url: " + absoluteString)
-      }
-    })
+    
+    // TODO: Move actual discovery to service once done.
+    // TODO: Validate Server status - APIs up - Robot(s) currently connected to consider things good to go.
+    // TODO: Make sure all that happens on a background thread.
+    // TODO: Show that server was discovered on UI.
+    
+    self.droidService = DroidService()
+    self.droidService.start()
   }
 
   override func didReceiveMemoryWarning() {
