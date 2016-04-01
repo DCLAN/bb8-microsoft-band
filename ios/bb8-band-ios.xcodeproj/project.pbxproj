@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		B235B0631C9C86440053373C /* discovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B235B0621C9C86440053373C /* discovery.swift */; };
+		B23F29831CADB8EB001C97D0 /* BandService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23F29821CADB8EB001C97D0 /* BandService.swift */; };
+		B23F29871CADEB4A001C97D0 /* BandAccelerometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23F29861CADEB4A001C97D0 /* BandAccelerometer.swift */; };
+		B23F29891CAF2AB8001C97D0 /* BandGyro.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23F29881CAF2AB8001C97D0 /* BandGyro.swift */; };
+		B23F298B1CAF2B2D001C97D0 /* BandBaseSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23F298A1CAF2B2D001C97D0 /* BandBaseSensor.swift */; };
 		B27E87921C53CCE400AAC6AC /* MicrosoftBandKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B27E87911C53CCE400AAC6AC /* MicrosoftBandKit_iOS.framework */; };
 		B2E09F6A1C53C30C00C26E9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E09F691C53C30C00C26E9D /* AppDelegate.swift */; };
 		B2E09F6C1C53C30C00C26E9D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E09F6B1C53C30C00C26E9D /* ViewController.swift */; };
@@ -41,6 +45,11 @@
 		4871893CFE5BEF30FF4FFBD2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6E252A24803F699450D4D86A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B235B0621C9C86440053373C /* discovery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = discovery.swift; path = Service/discovery.swift; sourceTree = "<group>"; };
+		B23F29821CADB8EB001C97D0 /* BandService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BandService.swift; path = Band/BandService.swift; sourceTree = "<group>"; };
+		B23F29851CADBA9C001C97D0 /* bb8-band-ios-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bb8-band-ios-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		B23F29861CADEB4A001C97D0 /* BandAccelerometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BandAccelerometer.swift; path = Band/BandAccelerometer.swift; sourceTree = "<group>"; };
+		B23F29881CAF2AB8001C97D0 /* BandGyro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BandGyro.swift; path = Band/BandGyro.swift; sourceTree = "<group>"; };
+		B23F298A1CAF2B2D001C97D0 /* BandBaseSensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BandBaseSensor.swift; path = Band/BandBaseSensor.swift; sourceTree = "<group>"; };
 		B27E87911C53CCE400AAC6AC /* MicrosoftBandKit_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MicrosoftBandKit_iOS.framework; path = "bb8-band-ios/Frameworks/MicrosoftBandKit_iOS.framework"; sourceTree = "<group>"; };
 		B2E09F661C53C30C00C26E9D /* bb8-band-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bb8-band-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2E09F691C53C30C00C26E9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +119,17 @@
 			name = Service;
 			sourceTree = "<group>";
 		};
+		B23F29811CADB8D0001C97D0 /* Band */ = {
+			isa = PBXGroup;
+			children = (
+				B23F29821CADB8EB001C97D0 /* BandService.swift */,
+				B23F29861CADEB4A001C97D0 /* BandAccelerometer.swift */,
+				B23F29881CAF2AB8001C97D0 /* BandGyro.swift */,
+				B23F298A1CAF2B2D001C97D0 /* BandBaseSensor.swift */,
+			);
+			name = Band;
+			sourceTree = "<group>";
+		};
 		B2E09F5D1C53C30C00C26E9D = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +155,7 @@
 		B2E09F681C53C30C00C26E9D /* bb8-band-ios */ = {
 			isa = PBXGroup;
 			children = (
+				B23F29811CADB8D0001C97D0 /* Band */,
 				B235B0611C9C862B0053373C /* Service */,
 				B2E09F691C53C30C00C26E9D /* AppDelegate.swift */,
 				B2E09F6B1C53C30C00C26E9D /* ViewController.swift */,
@@ -142,6 +163,7 @@
 				B2E09F701C53C30C00C26E9D /* Assets.xcassets */,
 				B2E09F721C53C30C00C26E9D /* LaunchScreen.storyboard */,
 				B2E09F751C53C30C00C26E9D /* Info.plist */,
+				B23F29851CADBA9C001C97D0 /* bb8-band-ios-Bridging-Header.h */,
 			);
 			path = "bb8-band-ios";
 			sourceTree = "<group>";
@@ -348,7 +370,11 @@
 			files = (
 				B235B0631C9C86440053373C /* discovery.swift in Sources */,
 				B2E09F6C1C53C30C00C26E9D /* ViewController.swift in Sources */,
+				B23F29831CADB8EB001C97D0 /* BandService.swift in Sources */,
+				B23F29871CADEB4A001C97D0 /* BandAccelerometer.swift in Sources */,
 				B2E09F6A1C53C30C00C26E9D /* AppDelegate.swift in Sources */,
+				B23F29891CAF2AB8001C97D0 /* BandGyro.swift in Sources */,
+				B23F298B1CAF2B2D001C97D0 /* BandBaseSensor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +525,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dclan.bb8-band-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "bb8-band-ios-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -515,6 +542,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dclan.bb8-band-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "bb8-band-ios-Bridging-Header.h";
 			};
 			name = Release;
 		};
