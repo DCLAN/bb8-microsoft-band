@@ -36,11 +36,14 @@ class BandService : NSObject, MSBClientManagerDelegate {
       return
     }
     
+    print(TAG + "Discovering Microsoft Bands...")
+    
     if let client = MSBClientManager.sharedManager().attachedClients().first as? MSBClient {
       self.client = client
       self.accelerometer = BandAccelerometer(withSensorManager: self.client?.sensorManager)
       self.gyroscope = BandGyro(withSensorManager: self.client?.sensorManager)
       
+      print(TAG + "Connecting to Microsoft Bands...")
       MSBClientManager.sharedManager().connectClient(self.client)
     } else {
       print(TAG + "no bands detected")
