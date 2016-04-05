@@ -15,5 +15,23 @@ protocol BandBaseSensor {
   
   func start()
   func stop()
+}
 
+struct BandSensorData {
+  let THRESHOLD = 80.0
+  var x = 0.0
+  var y = 0.0
+  var z = 0.0
+  
+  func isSignificantMovement() -> Bool {
+    return fabs(x) >= THRESHOLD || fabs(y) >= THRESHOLD || fabs(z) >= THRESHOLD
+  }
+  
+  func isVerticalMovement() -> Bool {
+    return fabs(z) >= THRESHOLD;
+  }
+}
+
+protocol BandSensorDelegate {
+  func didGetSensorData(withSensorData sensorData : BandSensorData)
 }

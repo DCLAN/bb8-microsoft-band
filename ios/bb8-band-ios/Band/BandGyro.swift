@@ -11,6 +11,7 @@ import Foundation
 class BandGyro : BandBaseSensor {
   let TAG = "[Gyro] - "
   weak var sensorManager : MSBSensorManagerProtocol?
+  var delegate : BandSensorDelegate?
   
   required init(withSensorManager sensorManager: MSBSensorManagerProtocol?) {
     self.sensorManager = sensorManager
@@ -20,7 +21,7 @@ class BandGyro : BandBaseSensor {
     do {
       try self.sensorManager?.startGyroscopeUpdatesToQueue(nil, withHandler: { (gyroData: MSBSensorGyroscopeData!, error: NSError!) in
         print(NSString(format: (self.TAG + "Accelerator Data: X=%+0.2f, Y=%+0.2f, Z=%0.2f"), gyroData.x, gyroData.y, gyroData.z));
-        // TODO: need to format + send that data to a data broker!
+        self.delegate?.didGetSensorData(withSensorData: BandSensorData(x:gyroData.x, y: gyroData.y, z: gyroData.z));
       })
     } catch {
       // TODO: log error

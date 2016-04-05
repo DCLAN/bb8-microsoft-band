@@ -24,7 +24,7 @@ router.post('/subscribe', function(req, res) {
 });
 
 // TODO: gross, needs to be more robust, you know?
-router.post('/move', function(req, res) {
+router.post('/start', function(req, res) {
   // TODO; create a bb8
   // TODO; Gross API.
   if(robots[0] == undefined) {

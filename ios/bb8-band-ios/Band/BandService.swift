@@ -8,9 +8,10 @@
 
 import Foundation
 
-class BandService : NSObject, MSBClientManagerDelegate {
+class BandService : NSObject {
   
   let TAG = "[BAND] - "
+  var messageProcessedTime = NSDate()
   var isConnected: Bool {
     get {
       return self.client != nil
@@ -18,7 +19,6 @@ class BandService : NSObject, MSBClientManagerDelegate {
   }
   
   weak var client: MSBClient?
-  var accelerometer: BandAccelerometer?
   var gyroscope: BandGyro?
   
   override init() {
@@ -40,8 +40,9 @@ class BandService : NSObject, MSBClientManagerDelegate {
     
     if let client = MSBClientManager.sharedManager().attachedClients().first as? MSBClient {
       self.client = client
-      self.accelerometer = BandAccelerometer(withSensorManager: self.client?.sensorManager)
+      
       self.gyroscope = BandGyro(withSensorManager: self.client?.sensorManager)
+      self.gyroscope?.delegate = self
       
       print(TAG + "Connecting to Microsoft Bands...")
       MSBClientManager.sharedManager().connectClient(self.client)
@@ -61,19 +62,48 @@ class BandService : NSObject, MSBClientManagerDelegate {
   
   // Mark - Accelerometer Functions
   func startSensing() {
-    self.accelerometer?.start()
     self.gyroscope?.start()
   }
   
   func stopSensing() {
-    self.accelerometer?.stop()
-    self.accelerometer = nil
-    
     self.gyroscope?.stop()
     self.gyroscope = nil
   }
-  
-  // Mark - Client Manager Delegates
+}
+
+// Mark - BandSensorDelegate
+extension BandService : BandSensorDelegate {
+  func didGetSensorData(withSensorData sensorData: BandSensorData) {
+    // Really should move debouning to the sensor.
+    // This should be able to detect 3 things:
+    // Movement isSingificant.
+    // Turn
+    // Forward/backwards
+    
+    // BUT - for now, testing full path, make it toggle w/ significant movement.
+    // Bonus with gross debouncing
+    if(sensorData.isVerticalMovement()) {
+      
+      if messageProcessedTime.timeIntervalSinceNow < 5.0 * 1000 {
+        messageProcessedTime = NSDate()
+        
+        // HACK - gross - Proof of concept
+        if(sensorData.z < 0) {
+          // Move up - This means start!
+          print("moving up")
+        } else if ( sensorData.z > 0 ) {
+          // Move down - This means stop!
+          print("moving down")
+        }
+
+        
+      }
+    }
+  }
+}
+
+// Mark - MSBClientManagerDelegate
+extension BandService : MSBClientManagerDelegate {
   func clientManager(clientManager: MSBClientManager!, clientDidConnect client: MSBClient!) {
     print(TAG + "connected")
     
