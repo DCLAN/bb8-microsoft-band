@@ -10,6 +10,7 @@
 #define bb8_band_ios_Bridging_Header_h
 
 #import <MicrosoftBandKit_iOS/MicrosoftBandKit_iOS.h>
+#import <AFNetworking/AFNetworking.h>
 
 
 #endif /* bb8_band_ios_Bridging_Header_h */

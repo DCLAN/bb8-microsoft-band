@@ -20,7 +20,9 @@ router.post('/subscribe', function(req, res) {
   var robot = new bb8("15acde0142c44762aa78c0e01489278b", "Zig");
   robot.connect();
   robots[0] = robot;
-  res.status(200).send("OK");
+  res.status(200);
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify({bb8: "Zig"}));
 });
 
 // TODO: gross, needs to be more robust, you know?

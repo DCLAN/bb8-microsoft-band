@@ -13,6 +13,7 @@
 		B23F29891CAF2AB8001C97D0 /* BandGyro.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23F29881CAF2AB8001C97D0 /* BandGyro.swift */; };
 		B23F298B1CAF2B2D001C97D0 /* BandBaseSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23F298A1CAF2B2D001C97D0 /* BandBaseSensor.swift */; };
 		B27E87921C53CCE400AAC6AC /* MicrosoftBandKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B27E87911C53CCE400AAC6AC /* MicrosoftBandKit_iOS.framework */; };
+		B2B5D5A21CB43353009ED503 /* DroidService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B5D5A11CB43353009ED503 /* DroidService.swift */; };
 		B2E09F6A1C53C30C00C26E9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E09F691C53C30C00C26E9D /* AppDelegate.swift */; };
 		B2E09F6C1C53C30C00C26E9D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E09F6B1C53C30C00C26E9D /* ViewController.swift */; };
 		B2E09F6F1C53C30C00C26E9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2E09F6D1C53C30C00C26E9D /* Main.storyboard */; };
@@ -51,6 +52,7 @@
 		B23F29881CAF2AB8001C97D0 /* BandGyro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BandGyro.swift; path = Band/BandGyro.swift; sourceTree = "<group>"; };
 		B23F298A1CAF2B2D001C97D0 /* BandBaseSensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BandBaseSensor.swift; path = Band/BandBaseSensor.swift; sourceTree = "<group>"; };
 		B27E87911C53CCE400AAC6AC /* MicrosoftBandKit_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MicrosoftBandKit_iOS.framework; path = "bb8-band-ios/Frameworks/MicrosoftBandKit_iOS.framework"; sourceTree = "<group>"; };
+		B2B5D5A11CB43353009ED503 /* DroidService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DroidService.swift; path = Service/DroidService.swift; sourceTree = "<group>"; };
 		B2E09F661C53C30C00C26E9D /* bb8-band-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bb8-band-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2E09F691C53C30C00C26E9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2E09F6B1C53C30C00C26E9D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				B235B0621C9C86440053373C /* Discovery.swift */,
+				B2B5D5A11CB43353009ED503 /* DroidService.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2B5D5A21CB43353009ED503 /* DroidService.swift in Sources */,
 				B235B0631C9C86440053373C /* Discovery.swift in Sources */,
 				B2E09F6C1C53C30C00C26E9D /* ViewController.swift in Sources */,
 				B23F29831CADB8EB001C97D0 /* BandService.swift in Sources */,

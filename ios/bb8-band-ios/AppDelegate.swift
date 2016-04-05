@@ -12,22 +12,15 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
-  var discovery: Discovery!
   var bandService: BandService!
+  var droidService: DroidService!
   
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    self.discovery = Discovery()
+    
+    self.droidService = DroidService()
+    self.droidService.start()
+
     self.bandService = BandService()
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-      let serviceName = "dclan-bb8-band"
-      self.discovery.searchForWebService(serviceName, completion: { (result: Bool, url: NSURL?) in
-        if let absoluteString = url?.absoluteString {
-          print("Discovered base url: " + absoluteString)
-        }
-      })
-    });
-    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
       self.bandService.connect()
     });

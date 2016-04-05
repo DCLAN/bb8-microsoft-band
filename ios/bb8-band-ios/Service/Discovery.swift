@@ -26,9 +26,11 @@ class Discovery : NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate {
     self.serviceName = serviceName
     self.completion = completion
     
-    print("DISCOVER[\(serviceName)] - Starting to search for Web Service")
-    self.serviceBrowser.searchForServicesOfType("_http._tcp.", inDomain: "local")
-    self.serviceBrowser.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+      print("DISCOVER[\(serviceName)] - Starting to search for Web Service")
+      self.serviceBrowser.searchForServicesOfType("_http._tcp.", inDomain: "local")
+      self.serviceBrowser.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+    });
   }
   
   
