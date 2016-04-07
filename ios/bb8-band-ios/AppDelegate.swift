@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     self.droidService.start()
 
     self.bandService = BandService()
+    self.bandService.delegate = self.droidService
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
       self.bandService.connect()
     });

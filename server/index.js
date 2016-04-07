@@ -20,6 +20,9 @@ router.post('/subscribe', function(req, res) {
   var robot = new bb8("15acde0142c44762aa78c0e01489278b", "Zig");
   robot.connect();
   robots[0] = robot;
+
+  console.log("Subscribed");
+
   res.status(200);
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify({bb8: "Zig"}));
@@ -34,7 +37,9 @@ router.post('/start', function(req, res) {
   } else {
     var robot = robots[0];
     robot.move();
-    res.status(200).send("Okay?");
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200);
+    res.send(JSON.stringify({bb8: "Zig"}));
   }
 });
 
@@ -47,7 +52,9 @@ router.post('/stop', function(req, res) {
   } else {
     var robot = robots[0];
     robot.stop();
-    res.status(200).send("Okay?");
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200);
+    res.send(JSON.stringify({bb8: "Zig"}));
   }
 });
 
@@ -56,6 +63,5 @@ app.listen(port);
 
 var appDiscovery = new discovery(port);
 appDiscovery.publish();
-appDiscovery.find();
 
 console.log("Server started on Port: " + port);

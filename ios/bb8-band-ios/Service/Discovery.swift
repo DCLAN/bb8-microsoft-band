@@ -8,8 +8,7 @@
 
 import Foundation
 
-
-class Discovery : NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate {
+class Discovery : NSObject {
   var serviceBrowser: NSNetServiceBrowser!
   var service: NSNetService!
   var serviceName: String!
@@ -32,49 +31,50 @@ class Discovery : NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate {
       self.serviceBrowser.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
     });
   }
-  
-  
-  // MARK: NSNetServiceDelegate
+}
+
+// MARK: NSNetServiceDelegate
+extension Discovery: NSNetServiceDelegate {
   func netServiceDidResolveAddress(sender: NSNetService) {
     print("netServiceResolved: " + sender.name)
     
-    let serviceUrl = NSURL(string: String(format:"http://%@:%d", sender.hostName!, sender.port))    
+    let serviceUrl = NSURL(string: String(format:"http://%@:%d", sender.hostName!, sender.port))
     self.completion?(result: true, url: serviceUrl)
+    
+  }
+}
 
-  }
-  
-  // TODO: handle non happy path.
-  
-  // MARK: NSNetServiceBrowserDelegate
+// MARK: NSNetServiceBrowserDelegate
+extension Discovery: NSNetServiceBrowserDelegate {
   func netServiceBrowser(netServiceBrowser: NSNetServiceBrowser,
-    didFindDomain domainName: String,
-    moreComing moreDomainsComing: Bool) {
-      print("netServiceDidFindDomain")
+                         didFindDomain domainName: String,
+                                       moreComing moreDomainsComing: Bool) {
+    print("netServiceDidFindDomain")
   }
   
   func netServiceBrowser(netServiceBrowser: NSNetServiceBrowser,
-    didRemoveDomain domainName: String,
-    moreComing moreDomainsComing: Bool) {
-      print("netServiceDidRemoveDomain")
+                         didRemoveDomain domainName: String,
+                                         moreComing moreDomainsComing: Bool) {
+    print("netServiceDidRemoveDomain")
   }
   
   func netServiceBrowser(netServiceBrowser: NSNetServiceBrowser,
-    didFindService netService: NSNetService,
-    moreComing moreServicesComing: Bool) {
-      print("netServiceDidFindService: " + netService.name)
+                         didFindService netService: NSNetService,
+                                        moreComing moreServicesComing: Bool) {
+    print("netServiceDidFindService: " + netService.name)
+    
+    if(netService.name == self.serviceName) {
+      self.service = netService
+      self.service.delegate = self
       
-      if(netService.name == self.serviceName) {
-        self.service = netService
-        self.service.delegate = self
-        
-        self.service.resolveWithTimeout(5.0)
-      }
+      self.service.resolveWithTimeout(5.0)
+    }
   }
   
   func netServiceBrowser(netServiceBrowser: NSNetServiceBrowser,
-    didRemoveService netService: NSNetService,
-    moreComing moreServicesComing: Bool) {
-      print("netServiceDidRemoveService")
+                         didRemoveService netService: NSNetService,
+                                          moreComing moreServicesComing: Bool) {
+    print("netServiceDidRemoveService")
   }
   
   func netServiceBrowserWillSearch(aNetServiceBrowser: NSNetServiceBrowser!){
@@ -82,12 +82,10 @@ class Discovery : NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate {
   }
   
   func netServiceBrowser(browser: NSNetServiceBrowser, didNotSearch errorDict: [String : NSNumber]) {
-      print("netServiceDidNotSearch")
+    print("netServiceDidNotSearch")
   }
   
   func netServiceBrowserDidStopSearch(netServiceBrowser: NSNetServiceBrowser) {
     print("netServiceDidStopSearch")
   }
-
-  
 }

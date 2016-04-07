@@ -18,6 +18,7 @@ class BandService : NSObject {
     }
   }
   
+  var delegate: BandMotionDelegate?
   weak var client: MSBClient?
   var gyroscope: BandGyro?
   
@@ -90,13 +91,11 @@ extension BandService : BandSensorDelegate {
         // HACK - gross - Proof of concept
         if(sensorData.z < 0) {
           // Move up - This means start!
-          print("moving up")
+          self.delegate?.move()
         } else if ( sensorData.z > 0 ) {
           // Move down - This means stop!
-          print("moving down")
-        }
-
-        
+          self.delegate?.stop()
+        } 
       }
     }
   }
