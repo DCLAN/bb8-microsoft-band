@@ -11,7 +11,10 @@ import Foundation
 class BandService : NSObject {
   
   let TAG = "[BAND] - "
+  let MESSAGE_THRESHOLD_IN_SECONDS =  1.5
   var messageProcessedTime = NSDate()
+  var isMoving = false // HACK: So gross... I really need a droid controller somewhere. For later. false = stopped
+  
   var isConnected: Bool {
     get {
       return self.client != nil
@@ -77,7 +80,7 @@ extension BandService : BandSensorDelegate {
   func didGetSensorData(withSensorData sensorData: BandSensorData) {
     // Really should move debouning to the sensor.
     // This should be able to detect 3 things:
-    // Movement isSingificant.
+    // Movement isSignificant.
     // Turn
     // Forward/backwards
     
@@ -85,18 +88,26 @@ extension BandService : BandSensorDelegate {
     // Bonus with gross debouncing
     if(sensorData.isVerticalMovement()) {
       
-      if messageProcessedTime.timeIntervalSinceNow < 5.0 * 1000 {
+      let updatedMoving = sensorData.z < 0
+      
+      if fabs(messageProcessedTime.timeIntervalSinceNow) >= MESSAGE_THRESHOLD_IN_SECONDS {
         messageProcessedTime = NSDate()
+        isMoving = updatedMoving
         
-        // HACK - gross - Proof of concept
-        if(sensorData.z < 0) {
-          // Move up - This means start!
-          self.delegate?.move()
-        } else if ( sensorData.z > 0 ) {
-          // Move down - This means stop!
-          self.delegate?.stop()
-        } 
+        handleMovement(sensorData)
       }
+    }
+  }
+  
+  func handleMovement(sensorData: BandSensorData) {
+    print(NSString(format: (self.TAG + "Moving due to Data: X=%+0.2f, Y=%+0.2f, Z=%0.2f"), sensorData.x, sensorData.y, sensorData.z));
+    
+    if(sensorData.z < 0) {
+      // Move up - This means start!
+      self.delegate?.move()
+    } else if ( sensorData.z > 0 ) {
+      // Move down - This means stop!
+      self.delegate?.stop()
     }
   }
 }

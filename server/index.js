@@ -1,62 +1,13 @@
 var express = require("express");
-var bb8 = require("./bb8");
 var app = express();
-var discovery = require("./discovery");
-
 var router = express.Router();
-app.use('/bb8', router);
 
-var robots = [];
-
-// API HERE
-router.get('/', function(req,res) {
-  res.send("Hello, I am BB8");
-});
-
-router.post('/subscribe', function(req, res) {
-  // TODO; create a bb8
-  // return an id
-  // TODO: UUID + name need to come from the application. Still at POC stage though.
-  var robot = new bb8("15acde0142c44762aa78c0e01489278b", "Zig");
-  robot.connect();
-  robots[0] = robot;
-
-  console.log("Subscribed");
-
-  res.status(200);
-  res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify({bb8: "Zig"}));
-});
-
-// TODO: gross, needs to be more robust, you know?
-router.post('/start', function(req, res) {
-  // TODO; create a bb8
-  // TODO; Gross API.
-  if(robots[0] == undefined) {
-    res.status(500).send("Not A Robot");
-  } else {
-    var robot = robots[0];
-    robot.move();
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200);
-    res.send(JSON.stringify({bb8: "Zig"}));
-  }
-});
-
-// TODO: gross, needs to be more robust, you know?
-router.post('/stop', function(req, res) {
-  // TODO; create a bb8
-  // TODO; Gross API.
-  if(robots[0] == undefined) {
-    res.status(500).send("Not A Robot");
-  } else {
-    var robot = robots[0];
-    robot.stop();
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200);
-    res.send(JSON.stringify({bb8: "Zig"}));
-  }
-});
+// Initializing Application - likely should go elsewhere.... An actual module?
+// I don't know what is the best practice for this...
+var controllers = require("./app/controllers");
+var discovery = controllers.Discovery();
+var bb8controller = require("./app/controllers/bb8-controller.js");
+var droid = require('./app/routes/droid.js')(app, router, new bb8controller());
 
 var port = process.env.PORT || 8080;
 app.listen(port);
@@ -64,4 +15,4 @@ app.listen(port);
 var appDiscovery = new discovery(port);
 appDiscovery.publish();
 
-console.log("Server started on Port: " + port);
+console.log("May the Force be With You on Port: " + port);
