@@ -10,7 +10,7 @@ That means the communication is: ```Band -> iOS -> node.js```, which is less tha
 - You need a working copy of ```node.js``` (get it from homebrew or something along those lines)
 - You need to install the noble package from Terminal ```npm install sphero noble```
 - You need to find your BB8's UUID. [Instructions here](https://www.npmjs.com/package/sphero#connecting-to-bb-8ollie).
-- Replace it [in code in the discovery route](./app/routes/droid.js)
+- Replace it [in code in the discovery route](/server/app/routes/droid.js)
 - First run ```npm install```
 - Run the server on your computer with ```npm start```
 - To run the iOS client, you need [CocoaPods](https://cocoapods.org/).
