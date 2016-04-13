@@ -1,7 +1,7 @@
 //** bb8.js **//
 // TODO: discover, keep track of bb8, do operations, etc...
 var sphero = require("sphero");
-var model = require("../models/bb8.js")
+var BB8Model = require("../models/bb8.js")
 
 var BB8Controller = function(){
   function BB8Controller(model) {
@@ -11,21 +11,27 @@ var BB8Controller = function(){
 
   BB8Controller.prototype.initialize = function(model) {
     this._model = model;
-
     console.log("::Initialized:: " + this._model.name() + "/" + this._model.uuid());
   };
 
   BB8Controller.prototype.isInitialized = function() {
     return this._model != null;
-  }
+  };
 
   BB8Controller.prototype.isReady = function() {
     return this._sphero != null && this._sphero.ready;
-  }
+  };
 
   BB8Controller.prototype.JSONModel = function() {
     return this._model.toJSON();
-  }
+  };
+  
+  BB8Controller.prototype.onDeviceDiscovered = function(peripheral) {
+    var bb8 = BB8Model.create();
+    bb8.name(peripheral.advertisement.localName);
+    bb8.uuid(peripheral.id);
+    this.initialize(bb8);
+  };
 
   BB8Controller.prototype.connect = function(cb) {
     if(!this.isInitialized()) {

@@ -6,3 +6,7 @@ module.exports.Discovery = function() {
 module.exports.BB8Controller = function() {
   return require('./bb8-controller.js');
 }
+
+module.exports.BTDiscovery = function() {
+  return require('./bt-discovery.js');
+}

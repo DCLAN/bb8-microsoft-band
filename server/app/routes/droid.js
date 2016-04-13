@@ -6,20 +6,13 @@ module.exports = function(app, router, controller) {
   app.use('/droid', router);
 
   router.get('/discover', function(req, res) {
-    // TODO: here goes logic to find a UUID for a bb8 droid.
-    // TODO: Returns all droids it is aware of...
-    // TODO: actual discovery should be done in a seperate module
-    var bb8 = bb8Model.create();
-    bb8.name("Zig");
-    bb8.uuid("15acde0142c44762aa78c0e01489278b");
-    controller.initialize(bb8);
-
     res.setHeader('Content-Type', 'application/json');
     res.status(200);
-    res.send(bb8.toJSON());
+    res.send(controller.JSONModel());
   });
 
   router.post('/subscribe', function(req, res) {
+    // TODO: set a name here.
     if(!controller.isInitialized()) {
       res.status(500);
       res.setHeader('Content-Type', 'application/json');

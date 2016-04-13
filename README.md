@@ -6,9 +6,11 @@ At the time of this writing, the native iOS sphero sdk framework didn't support 
 
 That means the communication is: ```Band -> iOS -> node.js```, which is less than ideal. Starting with crude rest calls for the POC, but plan to move to streaming data.
 
-### How to run it:
+### Requirements
 - You need a working copy of ```node.js``` (get it from homebrew or something along those lines)
-- You need to install the noble package from Terminal ```npm install sphero noble```
+- You need to install mocha (for Unit Tests) from the Terminal ```npm install mocha -g```
+
+### How to run it:
 - You need to find your BB8's UUID. [Instructions here](https://www.npmjs.com/package/sphero#connecting-to-bb-8ollie).
 - Replace it [in code in the discovery route](/server/app/routes/droid.js)
 - First run ```npm install```
