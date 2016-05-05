@@ -37,7 +37,6 @@ module.exports = function(app, router, controller) {
     res.status(200);
     res.setHeader('Content-Type', 'application/json');
     res.send(controller.JSONModel());
-
   });
 
   router.post('/move', function(req, res) {

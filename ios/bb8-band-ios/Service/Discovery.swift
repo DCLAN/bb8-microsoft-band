@@ -38,7 +38,7 @@ extension Discovery: NSNetServiceDelegate {
   func netServiceDidResolveAddress(sender: NSNetService) {
     print("netServiceResolved: " + sender.name)
     
-    let serviceUrl = NSURL(string: String(format:"http://%@:%d", sender.hostName!, sender.port))
+    let serviceUrl = NSURL(string: String(format:"https://%@:%d", sender.hostName!, sender.port))
     self.completion?(result: true, url: serviceUrl)
     
   }

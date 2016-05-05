@@ -27,6 +27,15 @@ class DroidService : NSObject {
     super.init()
     
     manager.responseSerializer.acceptableContentTypes = Set(["application/json"])
+    let policy = AFSecurityPolicy(pinningMode: AFSSLPinningMode.Certificate)
+    policy.validatesDomainName = false
+    policy.allowInvalidCertificates = true
+    
+    let certificatePath = NSBundle.mainBundle().pathForResource("cert", ofType: "cer")!
+    let certificateData = NSData(contentsOfFile: certificatePath)!
+    policy.pinnedCertificates = [certificateData];
+    
+    manager.securityPolicy = policy
 
   }
   
