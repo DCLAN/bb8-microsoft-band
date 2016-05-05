@@ -17,6 +17,7 @@ That means the communication is: ```Band -> iOS -> node.js```, which is less tha
 - Run the server on your computer with ```npm start```
 - To run the iOS client, you need [CocoaPods](https://cocoapods.org/).
 - In terminal, from the ```ios``` folder, run ```pod install```
+- In terminal, run the ```generateCertificates``` script to run generate some certificates.
 - Open the Workspace (not the Project) with Xcode.
 - Build, and deploy to a ***real*** device.
 
