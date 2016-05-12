@@ -14,6 +14,9 @@ class Discovery : NSObject {
   var serviceName: String!
   var completion: ((result: Bool, url: NSURL?) -> Void)!
   
+  let TAG = "[DISCOVER] - "
+  let timeout: Timeout = Timeout(2.0 * 60.0)
+  
   override init() {
     super.init()
     
@@ -26,7 +29,15 @@ class Discovery : NSObject {
     self.completion = completion
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-      print("DISCOVER[\(serviceName)] - Starting to search for Web Service")
+      print(self.TAG + "[\(serviceName)] - Starting to search for Web Service")
+      
+      self.timeout.start({
+        print(self.TAG + "[\(serviceName)] - Timed out. Stopping Discovery.")
+        self.serviceBrowser.stop()
+        
+        // TODO: notify UI of error. Whenever I have a ui!
+      });
+ 
       self.serviceBrowser.searchForServicesOfType("_http._tcp.", inDomain: "local")
       self.serviceBrowser.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
     });
@@ -38,9 +49,9 @@ extension Discovery: NSNetServiceDelegate {
   func netServiceDidResolveAddress(sender: NSNetService) {
     print("netServiceResolved: " + sender.name)
     
+    self.timeout.cancel()
     let serviceUrl = NSURL(string: String(format:"https://%@:%d", sender.hostName!, sender.port))
     self.completion?(result: true, url: serviceUrl)
-    
   }
 }
 
