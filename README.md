@@ -1,6 +1,7 @@
 # BB8 Microsoft Band Controller
 
-This is just a side project I'm working on for the fun of it.
+This is just a side project I'm working on for the fun of it. It's also quite in progress, and I work on it whenever I have a spare hour.
+
 I'm trying to connect my BB8 to my Microsoft Band to control it with "the force".
 At the time of this writing, the native iOS sphero sdk framework didn't support bb8, so I have to write a server to control it in node.js as an intermediate.
 
