@@ -22,7 +22,7 @@ class BandAccelerometer : BandBaseSensor {
   func start() {
     do {
       try self.sensorManager?.startAccelerometerUpdatesToQueue(nil, withHandler: { (accelerometerData: MSBSensorAccelerometerData!, error: NSError!) in
-        print(NSString(format: (self.TAG + "Accelerator Data: X=%+0.2f, Y=%+0.2f, Z=%0.2f"), accelerometerData.x, accelerometerData.y, accelerometerData.z));
+        print(NSString(format: (self.TAG + "Accelerator Data: X=%+0.2f, Y=%+0.2f, Z=%0.2f"), accelerometerData.x, accelerometerData.y, accelerometerData.z))
         // TODO: need to format + send that data to a data broker!
       })
     } catch {

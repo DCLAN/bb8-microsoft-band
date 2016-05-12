@@ -11,8 +11,8 @@ import AFNetworking
 
 class DroidService : NSObject {
   let TAG = "[DROIDSRV] - "
-  let serviceName = "dclan-bb8-band"
-  var discovery: Discovery! = Discovery()
+  let BB8_SERVICE_NAME = "dclan-bb8-band"
+  var discovery: Discovery!
   var serviceUrl: String = ""
   
   let ROUTE_BASE = "/droid"
@@ -26,6 +26,8 @@ class DroidService : NSObject {
   override init() {
     super.init()
     
+    self.discovery = Discovery(serviceName:BB8_SERVICE_NAME)
+    
     manager.responseSerializer.acceptableContentTypes = Set(["application/json"])
     let policy = AFSecurityPolicy(pinningMode: AFSSLPinningMode.Certificate)
     policy.validatesDomainName = false
@@ -33,18 +35,18 @@ class DroidService : NSObject {
     
     let certificatePath = NSBundle.mainBundle().pathForResource("cert", ofType: "cer")!
     let certificateData = NSData(contentsOfFile: certificatePath)!
-    policy.pinnedCertificates = [certificateData];
+    policy.pinnedCertificates = [certificateData]
     
     manager.securityPolicy = policy
 
   }
   
   func start() {
-    self.discovery.searchForWebService(self.serviceName, completion: { (result: Bool, url: NSURL?) in
+    self.discovery.searchForWebService({ (result: Bool, url: NSURL?) in
       if let absoluteString = url?.absoluteString {
         print(self.TAG + "Discovered base url: " + absoluteString)
         self.serviceUrl = absoluteString + self.ROUTE_BASE
-        self.discover();
+        self.discover()
       }
     })
   }

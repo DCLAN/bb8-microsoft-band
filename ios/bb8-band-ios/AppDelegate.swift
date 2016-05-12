@@ -12,20 +12,10 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
-  var bandService: BandService!
-  var droidService: DroidService!
   
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
-    self.droidService = DroidService()
-    self.droidService.start()
-
-    self.bandService = BandService()
-    self.bandService.delegate = self.droidService
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-      self.bandService.connect()
-    });
-    
+    AppEngine.sharedInstance.start()
     return true
   }
 

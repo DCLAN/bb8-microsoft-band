@@ -45,7 +45,7 @@ class Timeout: NSObject
     
     dispatch_async(dispatch_get_main_queue(), {
       self.timer = NSTimer.scheduledTimerWithTimeInterval(self.delaySeconds!, target: self, selector: #selector(self.invoke), userInfo: nil, repeats: false)
-    });
+    })
   }
   
   @objc private func invoke() {

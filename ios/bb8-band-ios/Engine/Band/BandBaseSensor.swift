@@ -28,7 +28,7 @@ struct BandSensorData {
   }
   
   func isVerticalMovement() -> Bool {
-    return fabs(z) >= THRESHOLD;
+    return fabs(z) >= THRESHOLD
   }
 }
 
