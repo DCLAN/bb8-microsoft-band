@@ -20,8 +20,8 @@ class BandGyro : BandBaseSensor {
   func start() {
     do {
       try self.sensorManager?.startGyroscopeUpdatesToQueue(nil, withHandler: { (gyroData: MSBSensorGyroscopeData!, error: NSError!) in
-//        print(NSString(format: (self.TAG + "Accelerator Data: X=%+0.2f, Y=%+0.2f, Z=%0.2f"), gyroData.x, gyroData.y, gyroData.z));
-        self.delegate?.didGetSensorData(withSensorData: BandSensorData(x:gyroData.x, y: gyroData.y, z: gyroData.z));
+//        print(NSString(format: (self.TAG + "Accelerator Data: X=%+0.2f, Y=%+0.2f, Z=%0.2f"), gyroData.x, gyroData.y, gyroData.z))
+        self.delegate?.didGetSensorData(withSensorData: BandSensorData(x:gyroData.x, y: gyroData.y, z: gyroData.z))
       })
     } catch {
       // TODO: log error

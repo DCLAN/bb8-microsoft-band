@@ -13,23 +13,46 @@ class Discovery : NSObject {
   var service: NSNetService!
   var serviceName: String!
   var completion: ((result: Bool, url: NSURL?) -> Void)!
+  var isSearching: Bool
   
-  override init() {
+  let TAG = "[DISCOVER] - "
+  let timeout: Timeout = Timeout(2.0 * 60.0)
+  
+  init(serviceName: String) {
+    self.isSearching = false
+    
     super.init()
     
     self.serviceBrowser = NSNetServiceBrowser()
     self.serviceBrowser.delegate = self
+    
+    self.serviceName = serviceName
   }
   
-  func searchForWebService(serviceName: String, completion: ((result: Bool, url: NSURL?) -> Void)?) {
-    self.serviceName = serviceName
-    self.completion = completion
+  func searchForWebService(completion: ((result: Bool, url: NSURL?) -> Void)?) {
     
+    if (isSearching) {
+      print(self.TAG + "[\(self.serviceName)] - WARNING - Already searching for Web Service")
+    }
+    
+    isSearching = true
+    self.completion = completion
+        
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-      print("DISCOVER[\(serviceName)] - Starting to search for Web Service")
+      print(self.TAG + "[\(self.serviceName)] - Starting to search for Web Service")
+      
+      self.timeout.start({
+        print(self.TAG + "[\(self.serviceName)] - Timed out. Stopping Discovery.")
+        self.serviceBrowser.stop()
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(DroidNotifications.kDroidDiscoveryTimedOut.rawValue, object: nil)
+      })
+ 
       self.serviceBrowser.searchForServicesOfType("_http._tcp.", inDomain: "local")
       self.serviceBrowser.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
-    });
+      
+      NSNotificationCenter.defaultCenter().postNotificationName(DroidNotifications.kDroidDiscoveryStarted.rawValue, object: nil)
+    })
   }
 }
 
@@ -38,9 +61,11 @@ extension Discovery: NSNetServiceDelegate {
   func netServiceDidResolveAddress(sender: NSNetService) {
     print("netServiceResolved: " + sender.name)
     
+    self.timeout.cancel()
     let serviceUrl = NSURL(string: String(format:"https://%@:%d", sender.hostName!, sender.port))
     self.completion?(result: true, url: serviceUrl)
     
+    NSNotificationCenter.defaultCenter().postNotificationName(DroidNotifications.kDroidDiscoveryCompleted.rawValue, object: serviceUrl)
   }
 }
 
@@ -61,6 +86,8 @@ extension Discovery: NSNetServiceBrowserDelegate {
   func netServiceBrowser(netServiceBrowser: NSNetServiceBrowser,
                          didFindService netService: NSNetService,
                                         moreComing moreServicesComing: Bool) {
+    NSNotificationCenter.defaultCenter().postNotificationName(DroidNotifications.kDroidDiscoveryStarted.rawValue, object: nil)
+
     print("netServiceDidFindService: " + netService.name)
     
     if(netService.name == self.serviceName) {
@@ -77,8 +104,9 @@ extension Discovery: NSNetServiceBrowserDelegate {
     print("netServiceDidRemoveService")
   }
   
-  func netServiceBrowserWillSearch(aNetServiceBrowser: NSNetServiceBrowser!){
-    print("netServiceBrowserWillSearch")
+  func netServiceBrowserWillSearch(aNetServiceBrowser: NSNetServiceBrowser){
+    NSNotificationCenter.defaultCenter().postNotificationName(DroidNotifications.kDroidDiscoveryStarted.rawValue, object: nil)
+    isSearching = true
   }
   
   func netServiceBrowser(browser: NSNetServiceBrowser, didNotSearch errorDict: [String : NSNumber]) {
@@ -86,6 +114,6 @@ extension Discovery: NSNetServiceBrowserDelegate {
   }
   
   func netServiceBrowserDidStopSearch(netServiceBrowser: NSNetServiceBrowser) {
-    print("netServiceDidStopSearch")
+    isSearching = false
   }
 }
