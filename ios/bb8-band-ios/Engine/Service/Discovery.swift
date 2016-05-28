@@ -104,7 +104,7 @@ extension Discovery: NSNetServiceBrowserDelegate {
     print("netServiceDidRemoveService")
   }
   
-  func netServiceBrowserWillSearch(aNetServiceBrowser: NSNetServiceBrowser!){
+  func netServiceBrowserWillSearch(aNetServiceBrowser: NSNetServiceBrowser){
     NSNotificationCenter.defaultCenter().postNotificationName(DroidNotifications.kDroidDiscoveryStarted.rawValue, object: nil)
     isSearching = true
   }

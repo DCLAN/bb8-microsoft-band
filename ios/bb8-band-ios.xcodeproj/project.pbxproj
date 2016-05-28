@@ -607,7 +607,7 @@
 				);
 				INFOPLIST_FILE = "bb8-band-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dclan.bb8-band-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "BB8-Band";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "bb8-band-ios-Bridging-Header.h";
 			};
@@ -625,7 +625,7 @@
 				);
 				INFOPLIST_FILE = "bb8-band-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dclan.bb8-band-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "BB8-Band";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "bb8-band-ios-Bridging-Header.h";
 			};
