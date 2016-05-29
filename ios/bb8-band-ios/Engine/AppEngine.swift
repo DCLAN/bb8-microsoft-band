@@ -16,10 +16,18 @@ class AppEngine {
   
   let TAG = "[APPENGINE] - "
   
+  var pairedDroid: Droid!
+  
   init() {
     self.droidService = DroidService()
     self.bandService = BandService()
     self.bandService.delegate = self.droidService
+    
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(didDiscoverActiveDroid), name: DroidNotifications.kDidDiscoverDroid.rawValue, object: nil)
+  }
+  
+  deinit {
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: DroidNotifications.kDidDiscoverDroid.rawValue, object: nil)
   }
   
   func start() {
@@ -30,5 +38,9 @@ class AppEngine {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
       self.bandService.connect()
     })
+  }
+  
+  @objc func didDiscoverActiveDroid(notification: NSNotification) {
+    self.pairedDroid = notification.object as! Droid
   }
 }

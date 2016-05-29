@@ -64,8 +64,6 @@ extension Discovery: NSNetServiceDelegate {
     self.timeout.cancel()
     let serviceUrl = NSURL(string: String(format:"https://%@:%d", sender.hostName!, sender.port))
     self.completion?(result: true, url: serviceUrl)
-    
-    NSNotificationCenter.defaultCenter().postNotificationName(DroidNotifications.kDroidDiscoveryCompleted.rawValue, object: serviceUrl)
   }
 }
 

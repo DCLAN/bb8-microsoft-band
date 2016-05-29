@@ -6,6 +6,7 @@ module.exports = function(app, router, controller) {
   app.use('/droid', router);
 
   router.get('/discover', function(req, res) {
+    // TODO: what about when the model isn't defined?
     res.setHeader('Content-Type', 'application/json');
     res.status(200);
     res.send(controller.JSONModel());

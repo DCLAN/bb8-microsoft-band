@@ -13,4 +13,5 @@ enum DroidNotifications : String {
   case kDroidDiscoveryCompleted = "droid-discovery-completed"
   case kDroidDiscoveryStopped = "droid-discovery-stopped"
   case kDroidDiscoveryTimedOut = "droid-discovery-timedout"
+  case kDidDiscoverDroid = "droid-discovered"
 }

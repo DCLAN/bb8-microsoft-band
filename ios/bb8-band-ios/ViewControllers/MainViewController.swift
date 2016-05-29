@@ -1,8 +1,8 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  bb8-band-ios
 //
-//  Created by Daniel Lanthier on 2016-01-23.
+//  Created by Daniel Lanthier on 2016-05-29.
 //  Copyright © 2016 Daniel Lanthier. All rights reserved.
 //
 
@@ -10,67 +10,91 @@ import UIKit
 
 class MainViewController: UIViewController {
   
-  @IBOutlet weak var searchingStackView: UIStackView?
-  @IBOutlet weak var searchingText: UILabel?
-  @IBOutlet weak var searchingActivityMonitor: UIActivityIndicatorView?
-  @IBOutlet weak var searchingRetryButton: UIButton?
-  
+  @IBOutlet weak var droidInfoLabel: UILabel?
+  @IBOutlet weak var tableView: UITableView?
+
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    // Uncomment the following line to preserve selection between presentations
+    // self.clearsSelectionOnView1WillAppear = false
+
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     
-    searchingActivityMonitor?.color = UIColor.orangeColor()
-    searchingText?.text = NSLocalizedString("Searching for your BB8 Droid, and Microsoft Band... \r\nDetecting your midichlorian count...\r\nWait a moment.", comment: "Starting scan for droid and band")
+    droidInfoLabel?.text = AppEngine.sharedInstance.pairedDroid.name
+  }
 
-    searchingRetryButton?.titleLabel?.text = NSLocalizedString("Retry", comment:"Retry for a button")
-  }
-  
-  override func viewWillAppear(animated: Bool) {
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(didDiscoverDroidService), name: DroidNotifications.kDroidDiscoveryCompleted.rawValue, object: nil);
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(didStartSearchingForDroidService), name: DroidNotifications.kDroidDiscoveryStarted.rawValue, object: nil);
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(didStopSearchingForDroidService), name: DroidNotifications.kDroidDiscoveryTimedOut.rawValue, object: nil);
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(didStopSearchingForDroidService), name: DroidNotifications.kDroidDiscoveryStopped.rawValue, object: nil);
-
-  }
-  
-  override func viewDidDisappear(animated: Bool) {
-    NSNotificationCenter.defaultCenter().removeObserver(self, name:DroidNotifications.kDroidDiscoveryCompleted.rawValue, object: nil);
-    NSNotificationCenter.defaultCenter().removeObserver(self, name:DroidNotifications.kDroidDiscoveryStopped.rawValue, object: nil);
-    NSNotificationCenter.defaultCenter().removeObserver(self, name:DroidNotifications.kDroidDiscoveryTimedOut.rawValue, object: nil);
-    NSNotificationCenter.defaultCenter().removeObserver(self, name:DroidNotifications.kDroidDiscoveryStarted.rawValue, object: nil);
-  }
-  
   override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
+      super.didReceiveMemoryWarning()
+      // Dispose of any resources that can be recreated.
   }
 
-  func didStartSearchingForDroidService(notification: NSNotification) {
-    searchingStackView?.hidden = false
-    searchingActivityMonitor?.startAnimating()
-  }
-  
-  func didDiscoverDroidService(notification: NSNotification) {
-    searchingStackView?.hidden = true
-    searchingActivityMonitor?.stopAnimating()
-    searchingActivityMonitor?.hidden = true
+  // MARK: - Table view data source
 
-    // TODO: move to next screen.
+//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 0
+//    }
+//
+//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete implementation, return the number of rows
+//        return 0
+//    }
+
+  /*
+  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+      let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+
+      // Configure the cell...
+
+      return cell
   }
-  
-  func didStopSearchingForDroidService(notification: NSNotification) {
-    searchingStackView?.hidden = false
-    searchingActivityMonitor?.stopAnimating()
-    searchingActivityMonitor?.hidden = true
-    searchingRetryButton?.enabled = true
-    
-    searchingText?.text = NSLocalizedString("Ooops, something went wrong with finding your midichlorian count. Try again!", comment:"Retry service discovery")
-    
+  */
+
+  /*
+  // Override to support conditional editing of the table view.
+  override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+      // Return false if you do not want the specified item to be editable.
+      return true
   }
-  
-  // MARK: User Actions
-  @IBAction func retry(sender: UIButton) {
-    AppEngine.sharedInstance.start()
-    searchingRetryButton?.enabled = false
+  */
+
+  /*
+  // Override to support editing the table view.
+  override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+      if editingStyle == .Delete {
+          // Delete the row from the data source
+          tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+      } else if editingStyle == .Insert {
+          // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+      }    
   }
+  */
+
+  /*
+  // Override to support rearranging the table view.
+  override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+
+  }
+  */
+
+  /*
+  // Override to support conditional rearranging of the table view.
+  override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+      // Return false if you do not want the item to be re-orderable.
+      return true
+  }
+  */
+
+  /*
+  // MARK: - Navigation
+
+  // In a storyboard-based application, you will often want to do a little preparation before navigation
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+      // Get the new view controller using segue.destinationViewController.
+      // Pass the selected object to the new view controller.
+  }
+  */
+
 }
-
