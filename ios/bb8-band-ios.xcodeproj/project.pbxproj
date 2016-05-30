@@ -13,19 +13,23 @@
 		B23F29891CAF2AB8001C97D0 /* BandAccelerometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23F29881CAF2AB8001C97D0 /* BandAccelerometer.swift */; };
 		B23F298B1CAF2B2D001C97D0 /* BandService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23F298A1CAF2B2D001C97D0 /* BandService.swift */; };
 		B2568E611CE4D5A5004715D4 /* Timeout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2568E601CE4D5A5004715D4 /* Timeout.swift */; };
+		B25766B21CFB663F003FC143 /* ForceCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25766B11CFB663F003FC143 /* ForceCommand.swift */; };
+		B25766B71CFB668D003FC143 /* Droid.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25766B61CFB668D003FC143 /* Droid.swift */; };
 		B272132D1CDBA44A00242F64 /* cert.cer in Resources */ = {isa = PBXBuildFile; fileRef = B272132C1CDBA44A00242F64 /* cert.cer */; };
 		B273F2431CE9622100E4354B /* AppEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B273F2421CE9622100E4354B /* AppEngine.swift */; };
 		B27E87921C53CCE400AAC6AC /* MicrosoftBandKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B27E87911C53CCE400AAC6AC /* MicrosoftBandKit_iOS.framework */; };
+		B291E3C71CFB5E570011DCE2 /* ForceCommandTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B291E3C51CFB5E570011DCE2 /* ForceCommandTableViewCell.swift */; };
 		B2B5D5A21CB43353009ED503 /* DroidService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B5D5A11CB43353009ED503 /* DroidService.swift */; };
 		B2B8DC071CE7942F00C5C1BF /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = B2B8DC061CE7942F00C5C1BF /* en.lproj */; };
 		B2BA6E2C1CB698F500F7C9E6 /* BandMotionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BA6E2B1CB698F500F7C9E6 /* BandMotionDelegate.swift */; };
 		B2E09F6A1C53C30C00C26E9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E09F691C53C30C00C26E9D /* AppDelegate.swift */; };
-		B2E09F6C1C53C30C00C26E9D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E09F6B1C53C30C00C26E9D /* MainViewController.swift */; };
+		B2E09F6C1C53C30C00C26E9D /* ConnectingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E09F6B1C53C30C00C26E9D /* ConnectingViewController.swift */; };
 		B2E09F6F1C53C30C00C26E9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2E09F6D1C53C30C00C26E9D /* Main.storyboard */; };
 		B2E09F711C53C30C00C26E9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2E09F701C53C30C00C26E9D /* Assets.xcassets */; };
 		B2E09F741C53C30C00C26E9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2E09F721C53C30C00C26E9D /* LaunchScreen.storyboard */; };
 		B2E09F7F1C53C30C00C26E9D /* bb8_band_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E09F7E1C53C30C00C26E9D /* bb8_band_iosTests.swift */; };
 		B2E09F8A1C53C30C00C26E9D /* bb8_band_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E09F891C53C30C00C26E9D /* bb8_band_iosUITests.swift */; };
+		B2E4C75D1CFBB63700CC7DC8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E4C75C1CFBB63700CC7DC8 /* MainViewController.swift */; };
 		B2F348CC1CE778ED001DB7A5 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F348CB1CE778ED001DB7A5 /* Notifications.swift */; };
 		C286756D2573AAEB76281930 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E252A24803F699450D4D86A /* Pods.framework */; };
 /* End PBXBuildFile section */
@@ -58,15 +62,18 @@
 		B23F29881CAF2AB8001C97D0 /* BandAccelerometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BandAccelerometer.swift; path = Engine/Band/BandAccelerometer.swift; sourceTree = "<group>"; };
 		B23F298A1CAF2B2D001C97D0 /* BandService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BandService.swift; path = Engine/Band/BandService.swift; sourceTree = "<group>"; };
 		B2568E601CE4D5A5004715D4 /* Timeout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Timeout.swift; path = Utility/Timeout.swift; sourceTree = "<group>"; };
+		B25766B11CFB663F003FC143 /* ForceCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForceCommand.swift; path = Models/ForceCommand.swift; sourceTree = "<group>"; };
+		B25766B61CFB668D003FC143 /* Droid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Droid.swift; sourceTree = "<group>"; };
 		B272132C1CDBA44A00242F64 /* cert.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = cert.cer; sourceTree = "<group>"; };
 		B273F2421CE9622100E4354B /* AppEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppEngine.swift; path = Engine/AppEngine.swift; sourceTree = "<group>"; };
 		B27E87911C53CCE400AAC6AC /* MicrosoftBandKit_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MicrosoftBandKit_iOS.framework; path = "bb8-band-ios/Frameworks/MicrosoftBandKit_iOS.framework"; sourceTree = "<group>"; };
+		B291E3C51CFB5E570011DCE2 /* ForceCommandTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForceCommandTableViewCell.swift; path = Views/ForceCommandTableViewCell.swift; sourceTree = "<group>"; };
 		B2B5D5A11CB43353009ED503 /* DroidService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DroidService.swift; path = Engine/Service/DroidService.swift; sourceTree = "<group>"; };
 		B2B8DC061CE7942F00C5C1BF /* en.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = en.lproj; sourceTree = "<group>"; };
-		B2BA6E2B1CB698F500F7C9E6 /* BandMotionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BandMotionDelegate.swift; sourceTree = "<group>"; };
+		B2BA6E2B1CB698F500F7C9E6 /* BandMotionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BandMotionDelegate.swift; path = Engine/Band/BandMotionDelegate.swift; sourceTree = "<group>"; };
 		B2E09F661C53C30C00C26E9D /* bb8-band-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bb8-band-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2E09F691C53C30C00C26E9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B2E09F6B1C53C30C00C26E9D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ViewControllers/MainViewController.swift; sourceTree = "<group>"; };
+		B2E09F6B1C53C30C00C26E9D /* ConnectingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConnectingViewController.swift; path = ViewControllers/ConnectingViewController.swift; sourceTree = "<group>"; };
 		B2E09F6E1C53C30C00C26E9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B2E09F701C53C30C00C26E9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B2E09F731C53C30C00C26E9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -77,6 +84,7 @@
 		B2E09F851C53C30C00C26E9D /* bb8-band-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bb8-band-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2E09F891C53C30C00C26E9D /* bb8_band_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bb8_band_iosUITests.swift; sourceTree = "<group>"; };
 		B2E09F8B1C53C30C00C26E9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2E4C75C1CFBB63700CC7DC8 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ViewControllers/MainViewController.swift; sourceTree = "<group>"; };
 		B2F348CB1CE778ED001DB7A5 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Utility/Notifications.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,6 +173,15 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		B25766B01CFB661F003FC143 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B25766B11CFB663F003FC143 /* ForceCommand.swift */,
+				B25766B61CFB668D003FC143 /* Droid.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		B273F2411CE961DB00E4354B /* Engine */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +219,7 @@
 			children = (
 				B273F2411CE961DB00E4354B /* Engine */,
 				B2568E641CE4FB5C004715D4 /* Resources */,
+				B25766B01CFB661F003FC143 /* Models */,
 				B2568E5F1CE4D58A004715D4 /* Utility */,
 				B2F348CA1CE7765F001DB7A5 /* ViewControllers */,
 				B2F348C91CE77617001DB7A5 /* Views */,
@@ -235,6 +253,7 @@
 			children = (
 				B2E09F721C53C30C00C26E9D /* LaunchScreen.storyboard */,
 				B2E09F6D1C53C30C00C26E9D /* Main.storyboard */,
+				B291E3C51CFB5E570011DCE2 /* ForceCommandTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -242,7 +261,8 @@
 		B2F348CA1CE7765F001DB7A5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B2E09F6B1C53C30C00C26E9D /* MainViewController.swift */,
+				B2E09F6B1C53C30C00C26E9D /* ConnectingViewController.swift */,
+				B2E4C75C1CFBB63700CC7DC8 /* MainViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -447,10 +467,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2B5D5A21CB43353009ED503 /* DroidService.swift in Sources */,
+				B25766B71CFB668D003FC143 /* Droid.swift in Sources */,
+				B291E3C71CFB5E570011DCE2 /* ForceCommandTableViewCell.swift in Sources */,
 				B235B0631C9C86440053373C /* Discovery.swift in Sources */,
 				B2F348CC1CE778ED001DB7A5 /* Notifications.swift in Sources */,
 				B2BA6E2C1CB698F500F7C9E6 /* BandMotionDelegate.swift in Sources */,
-				B2E09F6C1C53C30C00C26E9D /* MainViewController.swift in Sources */,
+				B2E09F6C1C53C30C00C26E9D /* ConnectingViewController.swift in Sources */,
+				B2E4C75D1CFBB63700CC7DC8 /* MainViewController.swift in Sources */,
 				B273F2431CE9622100E4354B /* AppEngine.swift in Sources */,
 				B23F29831CADB8EB001C97D0 /* BandGyro.swift in Sources */,
 				B23F29871CADEB4A001C97D0 /* BandBaseSensor.swift in Sources */,
@@ -458,6 +481,7 @@
 				B2568E611CE4D5A5004715D4 /* Timeout.swift in Sources */,
 				B23F29891CAF2AB8001C97D0 /* BandAccelerometer.swift in Sources */,
 				B23F298B1CAF2B2D001C97D0 /* BandService.swift in Sources */,
+				B25766B21CFB663F003FC143 /* ForceCommand.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,9 +23,13 @@ var BB8Controller = function(){
   };
 
   BB8Controller.prototype.JSONModel = function() {
+    if (this._model == null) {
+      return undefined;
+    }
+
     return this._model.toJSON();
   };
-  
+
   BB8Controller.prototype.onDeviceDiscovered = function(peripheral) {
     var bb8 = BB8Model.create();
     bb8.name(peripheral.advertisement.localName);

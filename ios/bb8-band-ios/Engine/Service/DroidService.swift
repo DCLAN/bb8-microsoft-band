@@ -15,6 +15,8 @@ class DroidService : NSObject {
   var discovery: Discovery!
   var serviceUrl: String = ""
   
+  var droid: Droid!
+  
   let ROUTE_BASE = "/droid"
   let ROUTE_DISCOVER = "/discover"
   let ROUTE_SUBSCRIBE = "/subscribe"
@@ -22,6 +24,11 @@ class DroidService : NSObject {
   let ROUTE_STOP = "/stop"
   
   let manager = AFHTTPSessionManager()
+  
+  private enum DroidProperties : String {
+    case kDroidName = "name"
+    case kDroidUUID = "uuid"
+  }
   
   override init() {
     super.init()
@@ -54,21 +61,34 @@ class DroidService : NSObject {
   func discover() {
     print(self.TAG + "discovering droids...")
     let discoverURL = serviceUrl + ROUTE_DISCOVER
-    manager.GET(discoverURL, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, sender: AnyObject?) in
-      print(self.TAG + "discovered to robot successfully!")
+    manager.GET(discoverURL, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, responseObject: AnyObject?) in
+      print(self.TAG + "discovered to robot successfully: ")
+      
+      let responseDict = responseObject as! Dictionary<String, AnyObject>
+      
+      let model = Droid();
+      model.name = responseDict[DroidProperties.kDroidName.rawValue] as! String;
+      model.uuid = responseDict[DroidProperties.kDroidUUID.rawValue] as! String;
+
+      NSNotificationCenter.defaultCenter().postNotificationName(DroidNotifications.kDidDiscoverDroid.rawValue, object: model);
+      NSNotificationCenter.defaultCenter().postNotificationName(DroidNotifications.kDroidDiscoveryCompleted.rawValue, object: responseObject)
+
+
       self.subscribe()
       },failure: { (task: NSURLSessionDataTask?, error: NSError) in
         print(self.TAG + "discovery failed (this isn't the droid you are looking for):" + error.description)
     })
   }
   
-  
   func subscribe() {
     print(self.TAG + "subscribing to robot...")
     
     let subscribeUrl = serviceUrl + ROUTE_SUBSCRIBE
-    manager.POST(subscribeUrl, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, sender: AnyObject?) in
+    manager.POST(subscribeUrl, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, responseObject: AnyObject?) in
       print(self.TAG + "subscribed to robot successfully!")
+      
+      // HACK: Subscribe isn't working - why! :(
+//      NSNotificationCenter.defaultCenter().postNotificationName(DroidNotifications.kDroidDiscoveryCompleted.rawValue, object: responseObject)
     },failure: { (task: NSURLSessionDataTask?, error: NSError) in
       print(self.TAG + "failure to subscribe to robot: " + error.description)
     })
