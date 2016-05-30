@@ -32,11 +32,11 @@
                                     <navigationItem title="BB8-Band" id="vHh-cy-sV1"/>
                                 </items>
                             </navigationBar>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NSy-RT-3kY">
-                                <rect key="frame" x="20" y="80" width="560" height="63"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NSy-RT-3kY">
+                                <rect key="frame" x="20" y="80" width="560" height="53"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4s-ZL-gEa">
-                                        <rect key="frame" x="0.0" y="0.0" width="480" height="63"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4s-ZL-gEa">
+                                        <rect key="frame" x="0.0" y="0.0" width="480" height="53"/>
                                         <attributedString key="attributedText">
                                             <fragment content="status status status">
                                                 <attributes>
@@ -61,8 +61,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="680" height="53"/>
                                         </variation>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q4e-t4-YHB">
-                                        <rect key="frame" x="490" y="0.0" width="70" height="63"/>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" misplaced="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q4e-t4-YHB">
+                                        <rect key="frame" x="490" y="0.0" width="70" height="53"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="PtH-1Z-dMz"/>
                                         </constraints>
